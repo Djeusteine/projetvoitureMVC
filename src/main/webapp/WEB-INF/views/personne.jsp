@@ -9,14 +9,16 @@
 <title>app title</title>
 </head>
 <body>
-	<h1> Ajouter une personne</h1>
+	<h1> Ajouter des personnes</h1>
 	<form:form action="addPers" method="post" modelAttribute="personne">
 		<form:input type="hidden" id="id" path="id" />
-		<label for="nom">Nom :</label>
+ 		<label for="nom">Nom :</label> 
 		<form:input type="text" id="nom" path="nom" />
-		<label for="prenom">Prénom :</label>
+		<form:errors path="nom"/>
+		<label for="prenom">Prénom :</label> 
 		<form:input type="text" id="prenom" path="prenom"/>
-		<label for="age">Nom :</label>
+		<form:errors path="prenom"/>
+		<label for="age">Nom :</label> 
 		<form:input type="text" id="age" path="age" />
 		<form:button>submit</form:button>
 	</form:form>

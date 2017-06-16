@@ -1,8 +1,11 @@
 package fr.projet.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.projet.metier.Personne;
@@ -22,7 +25,11 @@ public class PersonneController {
 	}
 
 	@RequestMapping("/addPers")
-	public String addPers(Model model, Personne p) {
+	public String addPers(@Valid Personne p, BindingResult bRes, Model model) {
+		if (bRes.hasErrors()) {
+			model.addAttribute("personnes", igp.findAll());
+			return "personne";
+		}
 		if (p.getId() == 0) {
 			try {
 				igp.addPersonne(p);

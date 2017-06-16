@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Personne {
@@ -14,7 +17,9 @@ public class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotEmpty
 	private String nom;
+	@Size(min = 4, max = 20)
 	private String prenom;
 	private int age;
 	@OneToMany(mappedBy = "personne") // comme on est en bidirectionnel, pour
